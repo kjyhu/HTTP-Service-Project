@@ -25,6 +25,18 @@ app.get("/api/genres/:id", (req, res) => {
     res.send(genre);
 })
 
+app.get("/api/genres/:month/:year", (req, res) => {
+    const genre = {
+        month: req.params.month,
+        year: req.params.year
+    }
+    if (!genre) {
+        res.status(404).send("The given month and year was not found")
+        return
+    }
+    res.send(genre);
+})
+
 //=========== ROUTES FOR HTTP POST REQUESTS ==========
 app.post("/api/genres", (req, res) => {
     const genre = {
